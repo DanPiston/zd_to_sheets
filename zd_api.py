@@ -3,6 +3,7 @@ import requests
 import config
 
 # Password setup in config.
+email = config.email
 pw = config.pw
 
 # View ID for Feature Requests
@@ -12,7 +13,7 @@ headers = {'Accept': 'application/json'}
 
 
 def pull_ticket_list():
-    r = requests.get(views_url, auth=('danp@aweber.com', pw), headers=headers)
+    r = requests.get(views_url, auth=(email, pw), headers=headers)
     data = r.json()
     ticket_list = data['tickets']
     return ticket_list
